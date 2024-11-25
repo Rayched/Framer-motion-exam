@@ -127,3 +127,103 @@ const GlobalStyle = createGlobalStyle`
 
 ### 2. Basic Animation
 
+#### 1. `styled-components` → `motion Components` Update
+
+``` tsx
+import {motion} from "framer-motion";
+
+function Exam(){
+	return (
+		<div>
+			<motion.div></motion.div>
+		</div>
+	);
+};
+```
+
+- 위의 코드는 Exam Components에 `motion` Component를 생성한 예시이다.
+- `framer-motion`의 기능들은 `motion Components` 안에서만 사용 가능하다.
+- 단, 위의 방법은 기존에 만들어둔 `styled-components`에는 적용할 수 없다.
+
+``` tsx
+const Box = styled.motion.div``; //Error
+//'motion'이라는 형식이 styled에 없기 때문에
+//Error가 발생한다.
+
+function Exam(){
+	/* 기존 코드 */
+};
+```
+
+- 따라서 기존 `styled-components`를 `motion components` 업데이트 하고자 한다면
+- `styled(motion.div)` 식으로 수정해주자.
+
+- 기존 `styled-components`가 `motion components`의 `CSS Code` 상속 받기에
+- 더 이상 문제가 생기지 않고, `framer-motion`의 기능도 사용 가능하다.
+
+``` tsx
+const Box = styled(motion.div)``;
+
+function Exam(){
+	/* 기존 코드 */
+};
+```
+
+---
+
+### 2. `motion Component` , `props...`
+
+#### (1). props: `animate`
+
+- `<motion />` Component의 `animate` props 통해
+- `Framer-motion`의 애니메이션을 제어할 수 있다.
+- 이때 간단한 animation 효과는 `animate props` 통해 값을 설정할 수 있다.
+
+``` tsx
+const Wrapper = styled.div``;
+const Box = styled(motion.div)``;
+
+function Exam(){
+	return (
+		<Wrapper>
+			<Box animate={{borderRadius: "100px"}} />
+		</Wrapper>
+	);
+	//기존의 사각형이던 Box Component를 둥글게 만든다.
+}
+```
+
+<img src="imgs/animate_props.png"/>
+
+---
+
+#### (2). props: `transition`
+
+- `transition` 속성은 Animation 적용 전에서 적용 후로 바뀌는 과정
+- 두 값 사이의 중간 과정의 `animation` 효과를 설정할 수 있는 속성
+
+``` tsx
+const Wrapper = styled.div``;
+const Box = styled(motion.div)``;
+
+function Exam(){
+	return (
+		<Wrapper>
+			<Box transition={{delay: 5}} animate={{borderRadius: "100px"}} />
+			<Box transition={{duration: 3}} animate={{borderRadius: "100px"}} />
+		</Wrapper>
+	);
+	//1번: 사각형 모양인 Box를 5초 뒤에 둥글게 만든다.
+	//2번: 사각형 모양의 Box를 약 3초 동안 둥글게 만든다.
+};
+```
+
+<img src="imgs/transition_props.png"/>
+
+---
+
+- `motion` Components의 기본적인 부분을 배웠다.
+- 이제 `framer-motion` 공식 사이트에서 예시로 보여준 `animation`들을 구현해보자.
+
+---
+
