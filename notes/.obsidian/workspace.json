@@ -77,8 +77,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "d33c8a22413771f2",
@@ -165,6 +164,8 @@
   },
   "active": "5c0d96ba151c4cf0",
   "lastOpenFiles": [
+    "imgs/exam1_simple.png.crswap",
+    "imgs/exam1_simple.png",
     "imgs/transition_props.png.crswap",
     "imgs/transition_props.png",
     "imgs/animate_props.png",

@@ -225,5 +225,37 @@ function Exam(){
 - `motion` Components의 기본적인 부분을 배웠다.
 - 이제 `framer-motion` 공식 사이트에서 예시로 보여준 `animation`들을 구현해보자.
 
+- **[공식 사이트, Motion 예시](https://motion.dev/#section-8)**
+
 ---
+
+#### (3). props: `initial`
+
+- `animation`이 시작하는 방식을 명시하는 `motion` 속성 중 하나
+- `initial` 속성에는 `Animation`을 적용할 Component의 초기 상태를 설정할 수 있다.
+
+- **`Simple` Animation 적용**
+
+``` tsx
+//border-radius 값 수정 (10px → 100px)
+const Box = styled(motion.div)`
+	/*기존 CSS 코드*/
+	/*border-radius: 10px*/
+	border-radius: 100px
+`;
+
+function Exam(){
+	return (
+		<Wrapper>
+			<Box 
+				initial={{scale: 0.8}}
+				transition={{delay: 2, type: "spring"}} 
+				animate={{scale: 1.2}} 
+			/>
+		</Wrapper>
+	);
+};
+```
+
+<img src="imgs/exam1_simple.png"/>
 
