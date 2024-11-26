@@ -173,6 +173,14 @@ function Exam(){
 
 ### 2. `motion Component` , `props...`
 
+- `motion` Component는 여러가지 `props` 가지고 있는데
+- 그냥 원론적으로 다루기엔 좀 지루하니깐
+- `framer-motion` 공식 사이트의 animation 예시들을 <br/>
+	비슷하게 구현해보면서 `framer-motion`과 좀 더 친해져 보겠다...
+
+- 이번 게시글에서 구현한 것은 아래 예시다.
+- **[예시 명: Simple](https://motion.dev/#section-1)**
+
 #### (1). props: `animate`
 
 - `<motion />` Component의 `animate` props 통해
@@ -201,6 +209,7 @@ function Exam(){
 
 - `transition` 속성은 Animation 적용 전에서 적용 후로 바뀌는 과정
 - 두 값 사이의 중간 과정의 `animation` 효과를 설정할 수 있는 속성
+- `css animation`의 속성, `delay`, `duration` 등을 그대로 사용할 수 있다.
 
 ``` tsx
 const Wrapper = styled.div``;
@@ -220,12 +229,14 @@ function Exam(){
 
 <img src="imgs/transition_props.png"/>
 
----
+- **`type`**
+	- `type` 속성은 실제로 사용될 Animation의 유형을 결정하는 속성이다.
+	- 기본 값은 `dynamic`이고 이외에도 `tween`, `spring`, `inertia` 등을 사용할 수 있다.
 
-- `motion` Components의 기본적인 부분을 배웠다.
-- 이제 `framer-motion` 공식 사이트에서 예시로 보여준 `animation`들을 구현해보자.
-
-- **[공식 사이트, Motion 예시](https://motion.dev/#section-8)**
+``` tsx
+<Box transition={{delay: 5, type: "spring"}} animate={{borderRadius: "100px"}} />
+//type: "spring" 설정하면, 약간 튀는듯한 느낌의 효과를 줄 수 있다.
+```
 
 ---
 
@@ -259,3 +270,7 @@ function Exam(){
 
 <img src="imgs/exam1_simple.png"/>
 
+---
+
+- 예제 실행하는 모습은 아래 유튜브 링크를 통해 확인할 수 있다.
+- **[20241126_framer-motion_simple 구현하기](https://youtu.be/3uuz4OnjJdA?si=cyyNyxy923prWDOx)**
